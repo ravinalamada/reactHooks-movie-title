@@ -17,6 +17,16 @@ h1 {
   margin-top: 2rem;
   padding: 1rem;
   background-color: brown;
+  border-radius: 0.5rem;
+}
+
+
+@media (min-width: 1000px) {
+  main {
+    max-width: 800px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+  }
 }
 
 
