@@ -1,0 +1,26 @@
+{
+  "name": "reacthooks-movie-title",
+  "version": "1.0.0",
+  "description": "Building a website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravinalamada/reactHooks-movie-title.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "bugs": {
+    "url": "https://github.com/ravinalamada/reactHooks-movie-title/issues"
+  },
+  "homepage": "https://github.com/ravinalamada/reactHooks-movie-title#readme",
+  "dependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  }
+}

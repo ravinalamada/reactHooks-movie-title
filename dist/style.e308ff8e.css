@@ -1,0 +1,23 @@
+main {
+  background-color: burlywood;
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: brown;
+}
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
