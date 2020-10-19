@@ -28312,7 +28312,7 @@ function MovieComponent() {
   (0, _react.useEffect)(() => {
     FetchMovie();
   }, []);
-  return /*#__PURE__*/_react.default.createElement("section", null, movies && movies.map(item => {
+  return /*#__PURE__*/_react.default.createElement("section", null, movies && movies.sort((a, b) => b.rt_score - a.rt_score).map(item => {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: item.id,
       className: "container"
@@ -28386,7 +28386,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64607" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52298" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

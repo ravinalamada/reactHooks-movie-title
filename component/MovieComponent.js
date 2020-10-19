@@ -16,7 +16,9 @@ function MovieComponent() {
 
   return (
     <section>
-      {movies && movies.map(item => {
+      {movies && movies
+      .sort((a, b) => b.rt_score - a.rt_score)
+      .map(item => {
         return (
           <div key={item.id} className="container">
             <div className="wrapper">
