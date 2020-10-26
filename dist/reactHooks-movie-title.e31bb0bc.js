@@ -28301,17 +28301,38 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function MovieComponent() {
   let [movies, setMovies] = (0, _react.useState)([]);
+  let [count, setCount] = (0, _react.useState)(0);
 
   async function FetchMovie() {
     const response = await fetch(`https://ghibliapi.herokuapp.com/films`);
     let data = await response.json();
     setMovies(() => movies = data);
-    console.log(movies);
   }
 
   (0, _react.useEffect)(() => {
     FetchMovie();
   }, []);
+
+  function HandleIncrement(e) {
+    const id = e.target.id;
+    const dataId = movies.find(item => item.id === id);
+    const increment = setCount(prev => prev.rt_score + 1);
+    setMovies(increment);
+  }
+
+  function HandleDecrement(e) {
+    const id = e.target.id;
+    console.log(id);
+    setMovies(movies.find(item => item.id === id));
+    setCount(prev => prev.rt_score - 1);
+  }
+
+  function HandleClick(e) {
+    const id = e.target.id;
+    setMovies(movies.find(item => item.id === id));
+    setCount(prev => prev.rt_score + 1);
+  }
+
   return /*#__PURE__*/_react.default.createElement("section", null, movies && movies.sort((a, b) => b.rt_score - a.rt_score).map(item => {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: item.id,
@@ -28320,7 +28341,19 @@ function MovieComponent() {
       className: "wrapper"
     }, /*#__PURE__*/_react.default.createElement("h2", null, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.release_date), /*#__PURE__*/_react.default.createElement("p", null, item.rt_score)), /*#__PURE__*/_react.default.createElement("p", null, item.description), /*#__PURE__*/_react.default.createElement("div", {
       className: "wrapper"
-    }, /*#__PURE__*/_react.default.createElement("p", null, item.producer), /*#__PURE__*/_react.default.createElement("p", null, item.director)));
+    }, /*#__PURE__*/_react.default.createElement("p", null, item.producer), /*#__PURE__*/_react.default.createElement("p", null, item.director)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+      className: "like",
+      id: item.id,
+      onClick: HandleIncrement
+    }, "Like"), /*#__PURE__*/_react.default.createElement("button", {
+      className: "unlike",
+      id: item.id,
+      onClick: HandleDecrement
+    }, "Unlike"), /*#__PURE__*/_react.default.createElement("button", {
+      className: "delete",
+      id: item.id,
+      onClick: HandleClick
+    }, "Delete")));
   }));
 }
 
@@ -28386,7 +28419,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52298" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63774" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

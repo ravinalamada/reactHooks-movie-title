@@ -2,17 +2,37 @@ import React, { useState, useEffect } from "react";
 
 function MovieComponent() {
   let [movies, setMovies] = useState([]);
+  let [count, setCount] = useState(0);
 
   async function FetchMovie() {
     const response = await fetch(`https://ghibliapi.herokuapp.com/films`);
     let data = await response.json();
     setMovies(() => movies = data);
-    console.log(movies);
   }
 
   useEffect(() => {
     FetchMovie()
   }, []);
+
+  function HandleIncrement (e) {
+    const id = e.target.id;
+    const dataId = movies.find(item => item.id === id);
+    const increment = dataId.rt_score++;
+    setCount(increment)
+  }
+
+  function HandleDecrement (e) {
+    const id = e.target.id;
+    const dataId = movies.find(item => item.id === id);
+    const decrement = dataId.rt_score--;
+    setCount(decrement)
+  }
+
+  function DeleteMovie (e) {
+    const id = e.target.id;
+    const filterdMovie = movies.filter(movie => movie.id != id);
+    setMovies(filterdMovie);
+  }
 
   return (
     <section>
@@ -31,7 +51,11 @@ function MovieComponent() {
               <p>{item.producer}</p>
               <p>{item.director}</p>
             </div>
-
+            <div>
+              <button className="like" id={item.id} onClick={HandleIncrement}>Like</button>
+              <button className="unlike" id={item.id} onClick={HandleDecrement}>Unlike</button>
+              <button className="delete" id={item.id} onClick={DeleteMovie}>Delete</button>
+            </div>
           </div>
         )
       })}
