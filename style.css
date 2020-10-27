@@ -1,25 +1,83 @@
+body {
+  background: #F2F7F5;
+  font-family: DM Serif Display;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 32px;
+}
+
 main {
-  background-color: burlywood;
   padding: 1rem;
 }
 
 h1 {
+  font-size: 52px;
+  line-height: 80px;
   text-align: center;
 }
 
+.heading2,
+.desc {
+  color: blueviolet
+}
+
+p {
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.wrapperDesc,
 .wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
+}
+
+.wrapperDesc {
+  width: 50%;
 }
 
 .container {
   margin-top: 2rem;
   padding: 1rem;
-  background-color: brown;
+  background-color: #FFDD78;;
   border-radius: 0.5rem;
 }
 
+button {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.like {
+  display: block;
+  background-image: url('./icons/thumbs-up.svg');
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.dislike {
+  display: block;
+  background-image: url('./icons/thumbs-down.svg');
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.delete {
+  display: block;
+  background-image: url('./icons/trash.svg');
+  background-repeat: no-repeat;
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
 
 @media (min-width: 1000px) {
   main {

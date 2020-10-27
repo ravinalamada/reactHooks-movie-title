@@ -28316,21 +28316,21 @@ function MovieComponent() {
   function HandleIncrement(e) {
     const id = e.target.id;
     const dataId = movies.find(item => item.id === id);
-    const increment = setCount(prev => prev.rt_score + 1);
-    setMovies(increment);
+    const increment = dataId.rt_score++;
+    setCount(increment);
   }
 
   function HandleDecrement(e) {
     const id = e.target.id;
-    console.log(id);
-    setMovies(movies.find(item => item.id === id));
-    setCount(prev => prev.rt_score - 1);
+    const dataId = movies.find(item => item.id === id);
+    const decrement = dataId.rt_score--;
+    setCount(decrement);
   }
 
-  function HandleClick(e) {
+  function DeleteMovie(e) {
     const id = e.target.id;
-    setMovies(movies.find(item => item.id === id));
-    setCount(prev => prev.rt_score + 1);
+    const filterdMovie = movies.filter(movie => movie.id != id);
+    setMovies(filterdMovie);
   }
 
   return /*#__PURE__*/_react.default.createElement("section", null, movies && movies.sort((a, b) => b.rt_score - a.rt_score).map(item => {
@@ -28339,21 +28339,33 @@ function MovieComponent() {
       className: "container"
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "wrapper"
-    }, /*#__PURE__*/_react.default.createElement("h2", null, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.release_date), /*#__PURE__*/_react.default.createElement("p", null, item.rt_score)), /*#__PURE__*/_react.default.createElement("p", null, item.description), /*#__PURE__*/_react.default.createElement("div", {
+    }, /*#__PURE__*/_react.default.createElement("h2", {
+      className: "heading2"
+    }, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.release_date), /*#__PURE__*/_react.default.createElement("p", {
+      className: "score"
+    }, item.rt_score, " \uD83D\uDC9F")), /*#__PURE__*/_react.default.createElement("p", null, item.description), /*#__PURE__*/_react.default.createElement("div", {
+      className: "wrapperDesc"
+    }, /*#__PURE__*/_react.default.createElement("p", {
+      className: "desc"
+    }, item.producer), /*#__PURE__*/_react.default.createElement("p", {
+      className: "desc"
+    }, item.director)), /*#__PURE__*/_react.default.createElement("span", null, "Prisca and ", /*#__PURE__*/_react.default.createElement("b", null, item.rt_score), " others like your movie"), /*#__PURE__*/_react.default.createElement("div", {
       className: "wrapper"
-    }, /*#__PURE__*/_react.default.createElement("p", null, item.producer), /*#__PURE__*/_react.default.createElement("p", null, item.director)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "wrapper"
+    }, /*#__PURE__*/_react.default.createElement("button", {
       className: "like",
       id: item.id,
       onClick: HandleIncrement
-    }, "Like"), /*#__PURE__*/_react.default.createElement("button", {
-      className: "unlike",
+    }), /*#__PURE__*/_react.default.createElement("button", {
+      className: "dislike",
       id: item.id,
       onClick: HandleDecrement
-    }, "Unlike"), /*#__PURE__*/_react.default.createElement("button", {
+    })), /*#__PURE__*/_react.default.createElement("button", {
       className: "delete",
       id: item.id,
-      onClick: HandleClick
-    }, "Delete")));
+      onClick: DeleteMovie
+    })));
   }));
 }
 
@@ -28419,7 +28431,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63774" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57113" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -42,19 +42,22 @@ function MovieComponent() {
         return (
           <div key={item.id} className="container">
             <div className="wrapper">
-              <h2>{item.title}</h2>
+              <h2 className="heading2">{item.title}</h2>
               <p>{item.release_date}</p>
-              <p>{item.rt_score}</p>
+              <p className="score">{item.rt_score} 💟</p>
             </div>
             <p>{item.description}</p>
-            <div className="wrapper">
-              <p>{item.producer}</p>
-              <p>{item.director}</p>
+            <div className="wrapperDesc">
+              <p className="desc">{item.producer}</p>
+              <p className="desc">{item.director}</p>
             </div>
-            <div>
-              <button className="like" id={item.id} onClick={HandleIncrement}>Like</button>
-              <button className="unlike" id={item.id} onClick={HandleDecrement}>Unlike</button>
-              <button className="delete" id={item.id} onClick={DeleteMovie}>Delete</button>
+            <span>Prisca and <b>{item.rt_score}</b> others like your movie</span>
+            <div className="wrapper">
+              <div className="wrapper">
+              <button className="like" id={item.id} onClick={HandleIncrement}></button>
+              <button className="dislike" id={item.id} onClick={HandleDecrement}></button>
+              </div>
+              <button className="delete" id={item.id} onClick={DeleteMovie}></button>
             </div>
           </div>
         )
