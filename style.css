@@ -45,6 +45,7 @@ p {
   padding: 1rem;
   background-color: #FFDD78;;
   border-radius: 0.5rem;
+  box-shadow: 10px 37px 6px rgba(0, 0, 0, 0.7);
 }
 
 button {

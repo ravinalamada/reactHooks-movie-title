@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Filter from "./Filter"
 
 function MovieComponent() {
   let [movies, setMovies] = useState([]);
   let [count, setCount] = useState(0);
+  let [fileterdList, setFileterdList] = useState('');
 
   async function FetchMovie() {
     const response = await fetch(`https://ghibliapi.herokuapp.com/films`);
@@ -34,10 +36,18 @@ function MovieComponent() {
     setMovies(filterdMovie);
   }
 
+  function HandleChange(e) {
+      setFileterdList(e.target.value)
+  }
+
   return (
     <section>
+      <Filter value={fileterdList} handleChange={HandleChange}></Filter>
       {movies && movies
       .sort((a, b) => b.rt_score - a.rt_score)
+      .filter((movie) => {
+        return movie.title.toLowerCase().includes(fileterdList.toLowerCase())
+      })
       .map(item => {
         return (
           <div key={item.id} className="container">
